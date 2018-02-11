@@ -44,7 +44,7 @@ def create_annotation(ann, ann_id):
     pattern_id = 1
     for confidence in ann.keys():
         for pattern in ann[confidence]:
-            for onset, pitch in pattern:
+            for onset, dur, pitch in pattern:
                 val = {
                     "pattern_id": pattern_id,
                     "midi_pitch": pitch,
@@ -52,7 +52,6 @@ def create_annotation(ann, ann_id):
                     "staff": 1,
                     "occurrence_id": 1  # TODO
                 }
-                dur = 1  # TODO
                 pattern_ann.append(time=onset, duration=dur, value=val,
                                    confidence=confidence)
             pattern_id += 1
